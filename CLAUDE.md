@@ -13,6 +13,16 @@ A web-based personal budgeting application for people new to the workforce. User
 - **V2** — Excel export, user login, database-backed persistence
 - **V3** — AI-powered bank statement scanning to auto-generate budgets (with secure document handling)
 
+## Documentation
+
+- **Project spec** — `project_spec.md` (goals, features, tech stack, data model)
+- **Changelog** — `docs/changelog.md` (record of major changes and releases)
+- **Project status** — `docs/project_status.md` (current progress, what's in flight, what's next)
+
+Update `docs/changelog.md` and `docs/project_status.md` after major milestones and major feature additions.
+
+When making git commits, use the `/update-docs-and-commit` slash command to ensure docs are kept in sync.
+
 ## Pull Request Rules
 
 - Always create a pull request to merge into `main` — never merge directly
