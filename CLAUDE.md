@@ -13,6 +13,12 @@ A web-based personal budgeting application for people new to the workforce. User
 - **V2** — Excel export, user login, database-backed persistence
 - **V3** — AI-powered bank statement scanning to auto-generate budgets (with secure document handling)
 
+## Pull Request Rules
+
+- Always create a pull request to merge into `main` — never merge directly
+- Never force push to `main`
+- Keep commits focused on a single change
+
 ## Branching Strategy
 
 - Never commit directly to `main`
