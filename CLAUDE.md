@@ -13,6 +13,12 @@ A web-based personal budgeting application for people new to the workforce. User
 - **V2** — Excel export, user login, database-backed persistence
 - **V3** — AI-powered bank statement scanning to auto-generate budgets (with secure document handling)
 
+## Branching Strategy
+
+- Never commit directly to `main`
+- Always create a branch before starting new features or fixes
+- Branch naming: `feature/description` or `fix/description`
+
 ## Tech Stack
 
 > To be confirmed. Update this section once the stack is decided.
