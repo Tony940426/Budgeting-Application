@@ -1,0 +1,48 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <span>Budget Buddy</span>
+</mat-toolbar>
+
+<main class="page">
+  <section class="intro">
+    <app-strategy-explanation></app-strategy-explanation>
+  </section>
+
+  <div class="grid">
+    <mat-card appearance="outlined" class="card input-card">
+      <mat-card-header>
+        <mat-card-title>Your income</mat-card-title>
+        <mat-card-subtitle>Enter what you earn each pay cycle.</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <app-budget-input></app-budget-input>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card appearance="outlined" class="card chart-card">
+      <mat-card-header>
+        <mat-card-title>Breakdown</mat-card-title>
+        <mat-card-subtitle>How your pay-cycle income splits.</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <app-budget-chart></app-budget-chart>
+      </mat-card-content>
+    </mat-card>
+
+    @if (hasIncome()) {
+      <mat-card appearance="outlined" class="card allocations-card">
+        <mat-card-header>
+          <mat-card-title>Allocations</mat-card-title>
+          <mat-card-subtitle>
+            Edit any amount to amend the suggested split.
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <app-allocation-list></app-allocation-list>
+          <div class="remaining-row">
+            <app-remaining></app-remaining>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+</main>

@@ -1,0 +1,38 @@
+@if (state(); as budget) {
+  <div class="allocation-list">
+    @for (allocation of budget.allocations; track allocation.category) {
+      <div class="allocation-row">
+        <div class="allocation-meta">
+          <div class="allocation-header">
+            <span class="category">{{ allocation.category }}</span>
+            <span class="percentage">{{ allocation.percentage | number: '1.0-0' }}%</span>
+          </div>
+          @if (allocation.description) {
+            <p class="description">{{ allocation.description }}</p>
+          }
+        </div>
+        <mat-form-field appearance="outline" class="amount-field">
+          <mat-label>Amount</mat-label>
+          <span matTextPrefix>$&nbsp;</span>
+          <input
+            matInput
+            type="number"
+            inputmode="decimal"
+            step="0.01"
+            min="0"
+            [ngModel]="allocation.amount"
+            (ngModelChange)="onAmend(allocation.category, $event)"
+          />
+        </mat-form-field>
+      </div>
+    }
+
+    @if (hasAmendments()) {
+      <div class="actions">
+        <button matButton="outlined" type="button" (click)="reset()">
+          Reset to strategy default
+        </button>
+      </div>
+    }
+  </div>
+}

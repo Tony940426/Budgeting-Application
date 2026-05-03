@@ -1,0 +1,26 @@
+<form [formGroup]="form" class="budget-input">
+  <mat-form-field appearance="outline" class="amount-field">
+    <mat-label>Income per pay cycle</mat-label>
+    <span matTextPrefix>$&nbsp;</span>
+    <input
+      matInput
+      type="number"
+      inputmode="decimal"
+      step="0.01"
+      min="0"
+      formControlName="amount"
+      placeholder="0.00"
+    />
+    @if (form.controls.amount.hasError('required') && form.controls.amount.touched) {
+      <mat-error>Income is required</mat-error>
+    }
+    @if (form.controls.amount.hasError('min')) {
+      <mat-error>Income must be greater than zero</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-radio-group formControlName="payCycle" aria-label="Pay cycle" class="pay-cycle-group">
+    <mat-radio-button value="fortnightly">Fortnightly</mat-radio-button>
+    <mat-radio-button value="monthly">Monthly</mat-radio-button>
+  </mat-radio-group>
+</form>
