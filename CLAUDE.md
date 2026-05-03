@@ -18,6 +18,7 @@ A web-based personal budgeting application for people new to the workforce. User
 - **Project spec** — `project_spec.md` (goals, features, tech stack, data model)
 - **Changelog** — `docs/changelog.md` (record of major changes and releases)
 - **Project status** — `docs/project_status.md` (current progress, what's in flight, what's next)
+- **Architecture** — `docs/architecture.md` (high-level system architecture, data flow, and component relationships)
 
 Update `docs/changelog.md` and `docs/project_status.md` after major milestones and major feature additions.
 
