@@ -38,11 +38,19 @@ When making git commits, use the `/update-docs-and-commit` slash command to ensu
 
 ## Tech Stack
 
-> To be confirmed. Update this section once the stack is decided.
+- **Frontend** (`/client`) — Angular 21 (standalone components, signals, Reactive Forms), TypeScript, SCSS, Angular Material, ng2-charts (Chart.js)
+- **Backend** (`/server`) — ASP.NET Core Web API on .NET 9. Scaffolded for V1 with a `/api/health` endpoint; real endpoints land from V2 (auth, persistence)
+- **Tests** — Vitest + Angular TestBed (client); xUnit + `WebApplicationFactory<Program>` (server)
+- **Repo layout** — `/client` and `/server` are independent projects in the same repo
 
 ## Architecture Notes
 
-> To be filled in as the codebase grows. Key areas to document here: how budgeting strategies are structured (so new ones can be added consistently), how state is managed, and (from V2) how auth and data persistence work.
+- **Strategy pattern**: every budgeting strategy implements `BudgetingStrategy` (`client/src/app/core/strategies/budgeting-strategy.ts`) — `id`, `name`, `description`, `calculate(income)`. New strategies register with `StrategyRegistry` and become available without touching the calculation pipeline.
+- **State**: `BudgetService` (`client/src/app/core/budget.service.ts`) holds reactive state in RxJS `BehaviorSubject`s (income, selected strategy, amendments) and exposes a derived `budget$` observable that recomputes on any change. Components subscribe via `toSignal` / `async` pipe.
+- **Calculation lives client-side in V1**. The .NET backend exists for V2 (auth, persistence, Excel export) but currently only serves `/api/health`.
+- **Amendments**: per-category overrides held in a `Map<category, amount>`. `remaining = income.amount - sum(allocation amounts)`. Resetting clears the map and falls back to the strategy's default split.
+- **Persistence**: none in V1 (state lives in memory only). V2 will introduce auth + a database; the backend project is scaffolded for that.
+- See `docs/architecture.md` for the full architecture overview.
 
 ## Key Domain Concepts
 
